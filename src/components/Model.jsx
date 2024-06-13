@@ -27,17 +27,17 @@ export const Model = () => {
         uniform sampler2D uClothes;
         ${shader.vertexShader}
         `;
-    shader.vertexShader = shader.vertexShader.replace(
-      `#include <begin_vertex>`,
-      `
-          vec3 clothesTexture = vec3(texture2D(uClothes, vUv));
-          float circleTime = 2.0;
-          float amplitude = 30.0;
-          float circleTimeParam = mod(uTime, circleTime);
-          vec3 transformed = vec3( position );
-          transformed.y += min(clothesTexture.y * sin( circleTimeParam * amplitude * (PI  / circleTime)) * 0.025, 0.5);
-        `
-    );
+    // shader.vertexShader = shader.vertexShader.replace(
+    //   `#include <begin_vertex>`,
+    //   `
+    //       vec3 clothesTexture = vec3(texture2D(uClothes, vUv));
+    //       float circleTime = 2.0;
+    //       float amplitude = 30.0;
+    //       float circleTimeParam = mod(uTime, circleTime);
+    //       vec3 transformed = vec3( position );
+    //       transformed.y += min(clothesTexture.y * sin( circleTimeParam * amplitude * (PI  / circleTime)) * 0.025, 0.5);
+    //     `
+    // );
   };
   useEffect(() => {
     actions["animation_0"].reset().play();
@@ -62,7 +62,7 @@ export const Model = () => {
             roughnessMap={skyDiverTextureRoughness}
             metalnessMap={skyDiverTextureMetallic}
             normalMap={skyDiverTextureNormal}
-            normalScale={[-0.2, 0.2]}
+            normalScale={[-0.2, 0.5]}
             envMapIntensity={0.8}
             toneMapped={false}
             onBeforeCompile={onBeforeCompile}

@@ -19,7 +19,7 @@ const Scene = () => {
       <directionalLight position={[-0.15, -2, 0]} intensity={2} />
       <OrbitControls ref={cameraRef} makeDefault />
       <EffectComposer>
-        <Bloom luminanceThreshold={0.6} luminanceSmoothing={0.5} intensity={1.2} mipmapBlur />
+        {/* <Bloom luminanceThreshold={0.6} luminanceSmoothing={0.5} intensity={1.2} mipmapBlur /> */}
         <Vignette offset={0.5} darkness={0.5} />
       </EffectComposer>
     </>
